@@ -19,5 +19,5 @@ from calc.views import index_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index_view)
+    url(r'^$', index_view, name="index")
 ]
