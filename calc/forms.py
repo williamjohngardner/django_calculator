@@ -1,7 +1,8 @@
 from django import forms
 
 
-class CalcForm(forms.ModelForm):
-
-    class Meta:
-        fields = ["input"]
+class Calculator(forms.Form):
+    operators = [('+', '+'), ('-', '-'), ('*', '*'), ('/', '/')]
+    a = forms.FloatField()
+    operators = forms.ChoiceField(operators, required=True)
+    b = forms.FloatField()

@@ -1,25 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div class="container">
     <form action="" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
-
-    <div class="btn-group" role="group" aria-label="Calc">
-      <button type="button" class="btn btn-lg">1</button>
-      <button type="button" class="btn btn-lg">2</button>
-      <button type="button" class="btn btn-lg">3</button>
-      <br>
-      <button type="button" class="btn btn-lg">4</button>
-      <button type="button" class="btn btn-lg">5</button>
-      <button type="button" class="btn btn-lg">6</button>
-      <br>
-      <button type="button" class="btn btn-lg">7</button>
-      <button type="button" class="btn btn-lg">8</button>
-      <button type="button" class="btn btn-lg">9</button>
-    </div>
+        <output>{{ result }}</output>
     </form>
-
-
+    </div>
 {% endblock %}
