@@ -1,4 +1,5 @@
 from calc.forms import Calculator
+from calc.models import Operation
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.urlresolvers import reverse
@@ -11,7 +12,7 @@ def index_view(request):
     a = ''
     b = ''
     operators = ''
-    form = Calculator
+
     print(request.POST)
     if request.method == "POST":
         form = Calculator(request.POST)
@@ -27,7 +28,9 @@ def index_view(request):
                 result = form.cleaned_data['a'] * form.cleaned_data['b']
             elif form.cleaned_data['operators'] == '/':
                 result = form.cleaned_data['a'] / form.cleaned_data['b']
-    return render(request, "index.html", {"form": form, "result": result, "a": a, "b": b, "operators": operators})
+        if request.user.is_authenticated():
+            Operation.objects.create(a=a, operators=operators, b=b, result=result, user=request.user)
+    return render(request, "index.html", {"form": Calculator(), "result": result, "a": a, "b": b, "operators": operators})
 
 
 @login_required
