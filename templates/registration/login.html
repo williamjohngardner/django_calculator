@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+    <h1>Bill's Awesome Django Calculator!!!</h1><h3>(...it uses forms...)</h3>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <pre>{{ form.as_p }}</pre>
+                    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <h2>Your Awesome Result:</h2> <h2>{{ a }} {{ operators }} {{ b }} = {{ result }}</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}

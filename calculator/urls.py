@@ -22,7 +22,8 @@ from django.contrib.auth.views import login, logout
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^logout$', logout, name="logout_view"),
-    url(r'^$', login, name='index'),
+    url(r'^$', index_view, name='index'),
+    url(r'^login$', login, name='login_view'),
     url(r'^create_user/$', create_user, name='create'),
     url(r'^accounts/profile/$', profile_view, name='profile')
 ]
