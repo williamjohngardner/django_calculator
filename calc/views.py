@@ -36,7 +36,8 @@ def index_view(request):
 @login_required
 def profile_view(request):
     print(request.user)
-    return render(request, "profile.html")
+    user_data = Operation.objects.all()
+    return render(request, "profile.html", {"user_data": user_data})
 
 
 def create_user(request):
