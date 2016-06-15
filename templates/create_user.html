@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <br>
-    <br>
-    {{ form.as_p }}
+    <div class="container">
+        <div class="panel panel-default">
+      <div class="panel-heading"><h4>By creating a user, you can log in and see your calculating history... how cool!</h4></div>
+        <div class="panel-body">
+        {{ form.as_p }}
+        </div>
+        </div>
 {% endblock %}

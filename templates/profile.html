@@ -2,25 +2,31 @@
 
 {% block content %}
     <div class="container">
-        <table class="table table-striped">
-            <tr>
-                <th>Record ID</th>
-                <th>User Name</th>
-                <th>Operand A</th>
-                <th>Operator</th>
-                <th>Operand B</th>
-                <th>Result</th>
-            </tr>
-            {% for user in user_data %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.user }}</td>
-                <td>{{ user.a }}</td>
-                <td>{{ user.operators }}</td>
-                <td>{{ user.b }}</td>
-                <td>{{ user.result }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>User Data</h4></div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Record ID</th>
+                            <th>User Name</th>
+                            <th>Operand A</th>
+                            <th>Operator</th>
+                            <th>Operand B</th>
+                            <th>Result</th>
+                        </tr>
+                        {% for user in user_data %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.user }}</td>
+                            <td>{{ user.a }}</td>
+                            <td>{{ user.operators }}</td>
+                            <td>{{ user.b }}</td>
+                            <td>{{ user.result }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
