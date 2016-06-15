@@ -1,6 +1,9 @@
+from calc.forms import Calculator
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from calc.forms import Calculator
 
 
 def index_view(request):
@@ -25,3 +28,20 @@ def index_view(request):
             elif form.cleaned_data['operators'] == '/':
                 result = form.cleaned_data['a'] / form.cleaned_data['b']
     return render(request, "index.html", {"form": form, "result": result, "a": a, "b": b, "operators": operators})
+
+@login_required
+def profile_view(request):
+    print(request.user)
+    return render(request, "profile.html")
+
+
+def create_user(request):
+    if request.POST:
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            return render(request, "create_user.html", {"form": form})
+    form = UserCreationForm()
+    return render(request, "create_user.html", {"form": form})
