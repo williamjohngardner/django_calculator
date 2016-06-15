@@ -29,6 +29,7 @@ def index_view(request):
                 result = form.cleaned_data['a'] / form.cleaned_data['b']
     return render(request, "index.html", {"form": form, "result": result, "a": a, "b": b, "operators": operators})
 
+
 @login_required
 def profile_view(request):
     print(request.user)
