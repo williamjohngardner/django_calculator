@@ -5,7 +5,11 @@
         <div class="panel panel-default">
       <div class="panel-heading"><h4>By creating a user, you can log in and see your calculating history... how cool!</h4></div>
         <div class="panel-body">
-        {{ form.as_p }}
+        <form action="" method="post">
+                    {% csrf_token %}
+                    <pre>{{ form.as_p }}</pre>
+                    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+                </form>
         </div>
         </div>
 {% endblock %}
